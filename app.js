@@ -6,9 +6,12 @@ GAME RULES:
 - BUT, if the player rolls a 1, all his ROUND score gets lost. After that, it's the next player's turn
 - The player can choose to 'Hold', which means that his ROUND score gets added to his GLBAL score. After that, it's the next player's turn
 - The first player to reach 100 points on GLOBAL score wins the game
+
+NEW RULE ADDED: 
+- A player looses the ENTIRE score when he rolls two 6 in a row. After that it's next players turn.
 */
 
-var scores, roundScore, activePlayer, gamePlay;
+var scores, roundScore, activePlayer, gamePlay, prevRoll = 0;
 
 init();
 
@@ -17,7 +20,7 @@ document.querySelector('.btn-roll').addEventListener('click', function() {
 	{
 		//1. Getting the random number
 		var dice = Math.floor(Math.random()*6) + 1;
-
+		
 	 	//2. Changing the on-screen dice 
 	 	var diceDom = document.querySelector('.dice');
 	 	diceDom.style.display = 'block';
@@ -34,6 +37,15 @@ document.querySelector('.btn-roll').addEventListener('click', function() {
 	 		// Changing the player
 	 		changePlayer();
 	 	}
+
+		//4. If the player rolls 6 two times
+		if(dice===6 && prevRoll===6)
+		{
+			// Changing the player
+	 		changePlayer();
+		}
+
+		prevRoll = dice;
 	}
 });
 
@@ -44,12 +56,18 @@ document.querySelector('.btn-hold').addEventListener('click', function() {
 		// Adding the round score to the Global Score
 		scores[activePlayer] += roundScore;
 		
+		var gamePoint = document.querySelector('.game_point').value;
+
+		if(!gamePoint)
+		{
+			gamePoint = 100;
+		}
 
 		// Updating the UI
 		document.getElementById('score-' + activePlayer ).textContent = scores[activePlayer]; 
 
 		// Check if the player won
-		if (scores[activePlayer]>=100) 
+		if (scores[activePlayer]>=gamePoint) 
 		{
 			document.getElementById('name-' + activePlayer).textContent = 'Winner!';
 			document.querySelector('.dice').style.display = 'none';

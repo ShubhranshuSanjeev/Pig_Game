@@ -10,32 +10,60 @@
     </head>
 
     <body>
-        <div class="wrapper clearfix">
-            <div class="player-0-panel active">
-                <div class="player-name" id="name-0">Player 1</div>
-                <div class="player-score" id="score-0">43</div>
-                <div class="player-current-box">
-                    <div class="player-current-label">Current</div>
-                    <div class="player-current-score" id="current-0">11</div>
+
+        <div class="wrapper">
+            <div class="container_1">
+                <div class="instruct">
+                    <h1>Instrucions</h1>
+                    <ol>
+                        <li><p>The game has <strong>two</strong> players, playing in rounds.</p></li>
+                        <li><p>In each turn, a player rolls a dice as many times as he whishes. Each result get added to his <strong>Round</strong> score.</p></li>
+                        <li><p>But, if the player rolls a <strong>1</strong>, all his <strong>Round</strong> score gets lost. After that, it's the next player's turn.</p></li>
+                        <li><p>A player looses the <strong>entire</strong> score when he rolls two 6 in a row. After that it's next players turn.</p></li>
+                        <li><p>The player can choose to 'Hold', which means that his <strong>Round</strong> score gets added to his <strong>Global</strong> score. After that, it's the next player's turn.</p></li>
+                        <li><p>The first player to reach 100 (default) points on <strong>Global</strong> score wins the game.</p></li>
+                    </ol>
+
+                    <button class="next">Next <span id="rarrow">&rarr;</span></button>
                 </div>
             </div>
+
             
-            <div class="player-1-panel">
-                <div class="player-name" id="name-1">Player 2</div>
-                <div class="player-score" id="score-1">72</div>
-                <div class="player-current-box">
-                    <div class="player-current-label">Current</div>
-                    <div class="player-current-score" id="current-1">0</div>
+            <div class="container_2">
+                <div class="game_panel clearfix">
+                    <div class="player-0-panel active">
+                        <div class="player-name" id="name-0">Player 1</div>
+                        <div class="player-score" id="score-0">43</div>
+                        <div class="player-current-box">
+                            <div class="player-current-label">Current</div>
+                            <div class="player-current-score" id="current-0">11</div>
+                        </div>
+                    </div>
+                    
+                    <div class="player-1-panel">
+                        <div class="player-name" id="name-1">Player 2</div>
+                        <div class="player-score" id="score-1">72</div>
+                        <div class="player-current-box">
+                            <div class="player-current-label">Current</div>
+                            <div class="player-current-score" id="current-1">0</div>
+                        </div>
+                    </div>
+                    
+                    <button class="game_btn_controls btn-new"><i class="ion-ios-plus-outline"></i>New game</button>
+                    <button class="game_btn_controls btn-roll"><i class="ion-ios-loop"></i>Roll dice</button>
+                    <button class="game_btn_controls btn-hold"><i class="ion-ios-download-outline"></i>Hold</button>
+
+                    <input type="text" name="Number" placeholder="GAME POINT" class="game_point">
+                    
+                    <img src="dice-5.png" alt="Dice" class="dice">
                 </div>
             </div>
-            
-            <button class="btn-new"><i class="ion-ios-plus-outline"></i>New game</button>
-            <button class="btn-roll"><i class="ion-ios-loop"></i>Roll dice</button>
-            <button class="btn-hold"><i class="ion-ios-download-outline"></i>Hold</button>
-            
-            <img src="dice-5.png" alt="Dice" class="dice">
+           
         </div>
+
+
         
+        <script src="script.js"></script>
         <script src="app.js"></script>
     </body>
 </html>
