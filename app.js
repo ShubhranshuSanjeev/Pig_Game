@@ -26,25 +26,27 @@ document.querySelector('.btn-roll').addEventListener('click', function() {
 	 	diceDom.style.display = 'block';
 	 	diceDom.src = 'dice-' + dice + '.png';
 
-	 	//3. Updating the score if the rolled number is not 1.
-	 	if(dice !== 1)
+	 	//Changing the player if dice roll is 1.
+	 	if(dice === 1)
 	 	{
-	 		roundScore += dice;
-	 		document.getElementById('current-' + activePlayer).textContent = roundScore;
-	 	}
-	 	else
-	 	{
-	 		// Changing the player
 	 		changePlayer();
 	 	}
-
-		//4. If the player rolls 6 two times
-		if(dice===6 && prevRoll===6)
+	 	//4. If the player rolls 6 two times
+	 	else if(dice===6 && prevRoll===6)
 		{
+			scores[activePlayer] = 0;
+			document.getElementById('score-'+activePlayer).textContent = scores[activePlayer];
 			// Changing the player
 	 		changePlayer();
-		}
 
+	 		console.log('worked');
+		}
+	 	//3. Updating the score if the rolled number is not 1.
+	 	else
+	 	{
+	 		roundScore += dice;
+	 		document.getElementById('current-' + activePlayer).textContent = roundScore;	
+	 	}
 		prevRoll = dice;
 	}
 });
@@ -97,9 +99,6 @@ function changePlayer()
 
 	document.querySelector('.player-0-panel').classList.toggle('active');
 	document.querySelector('.player-1-panel').classList.toggle('active');
-
-	// Hiding the Dice
-	document.querySelector('.dice').style.display = 'none';
 }
 
 document.querySelector('.btn-new').addEventListener('click', init);
